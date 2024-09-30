@@ -11,6 +11,8 @@ endif()
 
 project ("cmake_shp")
 
+set(CMAKE_CXX_STANDARD 17)
+
 find_package(fmt CONFIG REQUIRED)
 
 # 将源代码添加到此项目的可执行文件。
