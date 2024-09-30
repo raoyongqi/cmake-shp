@@ -148,7 +148,10 @@ while ((poFeature = poLayer->GetNextFeature()) != NULL) {
         }
             OGRFeature::DestroyFeature(newFeature); // Clean up
         }
-      }
+        count++;
+    }
+
+    
     OGRFeature::DestroyFeature(poFeature); // Clean up original feature
 }
 

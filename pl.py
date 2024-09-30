@@ -25,7 +25,8 @@ else:
     print(gdf_shp.info())
 
     # 打印 GeoDataFrame 的前几行
-    print(gdf_shp.head())
+    # print("gdf_shp_head",gdf_shp.head())
 
     # # 打印所有列的名称
-    print("Columns in gdf_shp:", gdf_shp.columns.tolist())
+    # print("Columns in gdf_shp:", gdf_shp.columns.tolist())
+    print("gdf_shp",gdf_shp)
