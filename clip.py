@@ -10,6 +10,11 @@ print("Shapefile CRS:", shp_data.crs)
 # 指定存放 GeoJSON 文件的目录
 geojson_dir = 'geojson'  # 替换为实际的目录
 
+# 指定输出 Shapefile 的目录
+output_dir = 'shp'
+# 如果输出目录不存在，创建它
+os.makedirs(output_dir, exist_ok=True)
+
 # 循环遍历 GeoJSON 文件
 for geojson_file in os.listdir(geojson_dir):
     if geojson_file.endswith('.json'):
@@ -31,11 +36,11 @@ for geojson_file in os.listdir(geojson_dir):
             
             # 检查裁剪结果是否为空
             if clipped_data.empty:
-                print(f"{geojson_file}裁剪后的数据为空，没有找到重叠区域。")
+                print(f"{geojson_file} 裁剪后的数据为空，没有找到重叠区域。")
             else:
                 # 保存裁剪后的数据，使用 GeoJSON 文件名作为输出文件名
-                output_path = os.path.join('shp', f"{geojson_file.replace('.json', '.shp')}")
+                output_path = os.path.join(output_dir, f"{geojson_file.replace('.json', '.shp')}")
                 clipped_data.to_file(output_path, encoding='GBK')  # 指定保存时的编码为 GBK
-                print(f"{geojson_file}裁剪后的数据已保存到 '{output_path}'")
+                print(f"{geojson_file} 裁剪后的数据已保存到 '{output_path}'")
         else:
-            print(f"{geojson_file}没有重叠区域，无法进行裁剪。")
+            print(f"{geojson_file} 没有重叠区域，无法进行裁剪。")
