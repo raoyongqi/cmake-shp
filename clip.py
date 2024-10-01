@@ -34,8 +34,8 @@ for geojson_file in os.listdir(geojson_dir):
                 print(f"{geojson_file}裁剪后的数据为空，没有找到重叠区域。")
             else:
                 # 保存裁剪后的数据，使用 GeoJSON 文件名作为输出文件名
-                output_path = os.path.join('shp', f"clipped_{geojson_file.replace('.json', '.shp')}")
-                clipped_data.to_file(output_path)
+                output_path = os.path.join('shp', f"{geojson_file.replace('.json', '.shp')}")
+                clipped_data.to_file(output_path, encoding='GBK')  # 指定保存时的编码为 GBK
                 print(f"{geojson_file}裁剪后的数据已保存到 '{output_path}'")
         else:
             print(f"{geojson_file}没有重叠区域，无法进行裁剪。")
